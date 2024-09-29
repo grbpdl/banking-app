@@ -2,6 +2,7 @@
 'use client'
 import React from 'react'
 import CountUp from 'react-countup';
+import DoghnutChart from './DoghnutChart';
 
 const TotalBalanceBox = ({
     accounts = [], totalBanks, totalCurrentBalance
@@ -9,7 +10,7 @@ const TotalBalanceBox = ({
     return (
         <section className='total-balance'>
             <div className='total-balance-chart'>
-                {/* DoghuntChart  */}
+                <DoghnutChart accounts={accounts}/>
             </div>
 
             <div className='flex flex-col gap-6'>
@@ -22,13 +23,13 @@ const TotalBalanceBox = ({
                         Total Current Balance
                     </p>
                    
-                    <p className='total-balance-amount flex-center gap-2'>
+                    <div className='total-balance-amount flex-center gap-2'>
                         <CountUp end={totalCurrentBalance}
                         decimals={2}
                         decimal=','
                         prefix='$'/>
 
-                    </p>
+                    </div>
                 </div>
             </div>
         </section>

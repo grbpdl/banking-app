@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import BankCard from './BankCard'
 
 const RightSidebar = ({ user, transactions, banks }: RightSidebarProps) => {
     return (
@@ -37,16 +38,26 @@ const RightSidebar = ({ user, transactions, banks }: RightSidebarProps) => {
                         </h2>
                     </Link>
                 </div>
-                {banks?.length>0 && (
+                {banks?.length > 0 && (
                     <div className='relative flex flex-1 felx-col items-center justify-center gap-5'>
-<div className='relative z-10'>
-Bank card 1
-</div>
-{banks[1] && (
-    <div className='absolute right-9 tip-8 z-0 w-[90%]'>
-        Bank card 2
-        </div>
-)}
+                        <div className='relative z-10'>
+                        <BankCard
+                            key={banks[0].$id}
+                            account={banks[0]}
+                            userName={`${user.firstName} ${user.lastName}`}
+                            showBalance={false}
+                            />
+                        </div>
+                        {banks[1] && (
+                            <div className='absolute right-0 top-8 z-0 w-[90%]'>
+                                 <BankCard
+                            key={banks[0].$id}
+                            account={banks[0]}
+                            userName={`${user.firstName} ${user.lastName}`}
+                            showBalance={false}
+                            />
+                            </div>
+                        )}
                     </div>
                 )}
 

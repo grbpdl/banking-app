@@ -30,6 +30,8 @@ const AuthForm = ({ type }: { type: string }) => {
     const [user, setUser] = useState(null)
     const [isLoading, setIsLoading] = useState(false);
     const formSchema=authFormSchema(type);
+  
+
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -42,8 +44,6 @@ const AuthForm = ({ type }: { type: string }) => {
 
         setIsLoading(true)
         try {
-            //sign up with appwrite and create plaid token
-            
             if(type==='sign-up')
             {
               const newUser=await signUp(data);

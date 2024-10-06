@@ -8,10 +8,13 @@ import { parseStringify } from "../utils";
 
 
 
-export const signIn = async () => {
+export const signIn = async ({email,password}:signInProps) => {
 
     try {
-        // mutation/database/make fetch
+        const { account } = await createAdminClient();
+
+        const  response=await account.createEmailPasswordSession(email,password);
+        return parseStringify(response);
     } catch (error) {
         console.log(error)
 
@@ -38,7 +41,7 @@ export const signUp = async (userData: SignUpParams) => {
             sameSite: "strict",
             secure: true,
         });
-        return parseStringify{newUserAccount};
+        return parseStringify(newUserAccount);
 
     } catch (error) {
         console.log(error)
